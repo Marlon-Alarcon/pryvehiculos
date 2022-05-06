@@ -1,0 +1,54 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+
+<!-- <h1 class="pull-rig d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 10px; margin-bottom: 5px;">
+    <a href="#" class="btn btn-primary pull-right" >Adicionar</a>
+</h1> -->
+<h1 class="pull-rig">
+    <div class="row">
+        <div class="col-4">
+            <h2>LISTADO DE VEHICULOS</h2>
+        </div>
+        <div class="col-4">
+            
+        </div>
+        <div class="col-4 text-center">
+            <a href="{% url 'vehiculos:vehiculoCreate' %}" class="btn btn-primary pull-right ">Adicionar</a>
+        </div>
+    </div>
+</h1>
+    <table class="table table-primary table-striped table-bordered">
+        <thead>
+          <tr>
+            <th scope="col"class="text-center">ID</th>
+            <th scope="col"class="text-center">MODELO</th>
+            <th scope="col"class="text-center">COLOR</th>
+            <th scope="col"class="text-center">PLACA</th>
+            <th scope="col"class="text-center">MOTOR</th>
+            <th scope="col"class="text-center">MARCA</th>
+            <th scope="col"class="text-center">TIPO VEHICULO</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% if vehiculos %}
+
+                {% for vehiculo in vehiculos %}
+                    <tr>
+                        <td class="text-center">{{ vehiculo.id }}</td>
+                        <td class="text-center">{{ vehiculo.modelo }}</td>
+                        <td class="text-center">{{ vehiculo.color }}</td>
+                        <td class="text-center">{{ vehiculo.placa }}</td>
+                        <td class="text-center">{{ vehiculo.motor }}</td>
+                        <td class="text-center">{{ vehiculo.marca }}</td>
+                        <td class="text-center">{{ vehiculo.tipovehiculo }}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <h3>No existen Registros</h3>
+            {% endif %}
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -19,7 +19,7 @@ class Vehiculo(models.Model):
     placa = models.CharField(max_length=15)
     motor = models.CharField(max_length=10)
     marca = models.ForeignKey(Marca, null=True, blank=True, on_delete=models.CASCADE)
-    tipovehiculo = models.ForeignKey(TipoVehiculo, null=True, blank=True, on_delete=models.CASCADE)
+    tipovehiculo = models.ForeignKey(TipoVehiculo, null=True, blank=True, on_delete=models.CASCADE, verbose_name="Tipo de Vehiculos")
 
     def __str__(self):
         return self.modelo

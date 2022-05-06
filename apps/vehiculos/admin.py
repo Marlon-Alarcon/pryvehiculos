@@ -5,9 +5,9 @@ from apps.vehiculos.models import Marca,TipoVehiculo,Vehiculo
 
 
 class Vehiculoadmin(admin.ModelAdmin):
-    list_display = ('modelo', 'color', 'placa', 'marca',"tipovehiculo")
+    list_display = ('modelo', 'color', 'placa','marca',"tipovehiculo")
     ordering = ('modelo', 'color', 'placa', 'marca','tipovehiculo')
-    search_fields = ('modelo','marca__nombre', 'tipovehiculo__nombre')
+    search_fields = ('modelo','placa','marca__nombre', 'tipovehiculo__nombre')
     list_filter = ('modelo','marca__nombre', 'tipovehiculo__nombre')
 
 admin.site.register(TipoVehiculo)

@@ -12,7 +12,7 @@ class Venta(models.Model):
     vehiculo = models.ManyToManyField(Vehiculo, through= 'VehiculoVenta')
 
     def __str__(self):
-        return str(self.valorTotal)
+        return str(self.fecha) #[:20] + " "+str(self.valorTotal) -> si deseo agregarle otro dato a la vista
 
 class VehiculoVenta(models.Model):
     vehiculo = models.ForeignKey(Vehiculo, on_delete= models.CASCADE, blank=False, null=False)
