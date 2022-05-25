@@ -21,4 +21,6 @@ urlpatterns = [
     path('', home, name='home'),
     path('admin/', admin.site.urls),
     path('vehiculos/', include('apps.vehiculos.urls', namespace='vehiculos')), # a que aplicación quiero enviarlo cuando pongan /vehiculos 
+    path('ventas/', include('apps.ventas.urls', namespace='ventas')),
 ]
+

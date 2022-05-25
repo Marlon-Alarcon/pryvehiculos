@@ -1,0 +1,54 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+
+<!-- <h1 class="pull-rig d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 10px; margin-bottom: 5px;">
+    <a href="#" class="btn btn-primary pull-right" >Adicionar</a>
+</h1> -->
+<h1 class="pull-rig">
+    <div class="row">
+        <div class="col-4">
+            <h2>LISTADO DE MARCAS</h2>
+        </div>
+        <div class="col-4">
+            
+        </div>
+        <div class="col-4 text-center">
+            <a href="{% url 'vehiculos:TipoVehiculoCreate' %}" class="btn btn-primary pull-right ">Adicionar</a>
+        </div>
+    </div>
+</h1>
+    <table class="table table-primary table-striped table-bordered">
+        <thead>
+          <tr>
+            <th scope="col"class="text-center">ID</th>
+            <th scope="col"class="text-center">TIPO</th>
+            <th scope="col"class="text-center">Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% if vehiculos %}
+
+                {% for tipovehiculo in vehiculos %}
+                    <tr>
+                        <td class="text-center">{{ tipovehiculo.id }}</td>
+                        <td class="text-center">{{ tipovehiculo.nombre }}</td>
+                        <td class="d-flex justify-content-center">
+                            <a class="btn btn-primary btn-warning btn-xs" href="{% url 'vehiculos:TipoVehiculoEdit' tipovehiculo.id %}">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+    
+                            <a class="btn btn-primary btn-dange btn-xs" href="{% url 'vehiculos:TipoVehiculoElim' tipovehiculo.id %}">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <h3>No existen Registros en tipo vehiculo</h3>
+            {% endif %}
+        </tbody>
+    </table>
+
+{% endblock %}

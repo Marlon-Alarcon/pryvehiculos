@@ -22,4 +22,4 @@ class Vehiculo(models.Model):
     tipovehiculo = models.ForeignKey(TipoVehiculo, null=True, blank=True, on_delete=models.CASCADE, verbose_name="Tipo de Vehiculos")
 
     def __str__(self):
-        return self.modelo
+        return str(self.modelo)

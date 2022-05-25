@@ -1,0 +1,54 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+
+<!-- <h1 class="pull-rig d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 10px; margin-bottom: 5px;">
+    <a href="#" class="btn btn-primary pull-right" >Adicionar</a>
+</h1> -->
+<h1 class="pull-rig">
+    <div class="row">
+        <div class="col-4">
+            <h2>LISTADO DE MARCAS</h2>
+        </div>
+        <div class="col-4">
+            
+        </div>
+        <div class="col-4 text-center">
+            <a href="{% url 'vehiculos:marcaCreate' %}" class="btn btn-primary pull-right ">Adicionar</a>
+        </div>
+    </div>
+</h1>
+    <table class="table table-primary table-striped table-bordered">
+        <thead>
+          <tr>
+            <th scope="col"class="text-center">ID</th>
+            <th scope="col"class="text-center">Marca</th>
+            <th scope="col"class="text-center">Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% if vehiculos %}
+
+                {% for marca in vehiculos %}
+                    <tr>
+                        <td class="text-center">{{ marca.id }}</td>
+                        <td class="text-center">{{ marca.nombre }}</td>
+                        <td class="d-flex justify-content-center">
+                            <a class="btn btn-primary btn-warning btn-xs" href="{% url 'vehiculos:marcaEdit' marca.id %}">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+    
+                            <a class="btn btn-primary btn-dange btn-xs" href="{% url 'vehiculos:marcaElim' marca.id %}">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <h3>No existen Registros en Vehiculos</h3>
+            {% endif %}
+        </tbody>
+    </table>
+
+{% endblock %}

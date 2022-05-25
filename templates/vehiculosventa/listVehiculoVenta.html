@@ -1,0 +1,55 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<h1 class="pull-rig">
+    <div class="row">
+        <div class="col-4">
+            <h2>LISTADO DE VEHICULO VENTA</h2>
+        </div>
+        <div class="col-4">
+            
+        </div>
+        <div class="col-4 text-center">
+            <a href="{% url 'ventas:VehiculoventaCreate' %}" class="btn btn-primary pull-right ">Adicionar</a>
+        </div>
+    </div>
+</h1>
+    <table class="table table-primary table-striped table-bordered">
+        <thead>
+          <tr>
+            <th scope="col"class="text-center">ID</th>
+            <th scope="col"class="text-center">VEHICULO</th>
+            <th scope="col"class="text-center">VENTA</th>
+            <th scope="col"class="text-center">CANTIDAD</th>
+            <th scope="col"class="text-center">PRECIO</th>
+            <th scope="col"class="text-center">Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% if ventas %}
+
+                {% for vehiculoventa in ventas %}
+                    <tr>
+                        <td class="text-center">{{ vehiculoventa.id }}</td>
+                        <td class="text-center">{{ vehiculoventa.vehiculo }}</td>
+                        <td class="text-center">{{ vehiculoventa.venta }}</td>
+                        <td class="text-center">{{ vehiculoventa.cantidad }}</td>
+                        <td class="text-center">{{ vehiculoventa.precio }}</td>
+                        <!-- <td class="text-center">{{ venta.vehiculo.extra.first }}</td>-->
+                        <td class="d-flex justify-content-center">
+                            <a class="btn btn-primary btn-warning btn-xs" href="{% url 'ventas:VehiculoventaEdit' vehiculoventa.id %}">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+    
+                            <a class="btn btn-primary btn-dange btn-xs" href="{% url 'ventas:VehiculoventaElim' vehiculoventa.id %}">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <h3>No existen Registros</h3>
+            {% endif %}
+        </tbody>
+    </table>
+{% endblock  %}

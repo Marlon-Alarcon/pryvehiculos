@@ -29,6 +29,7 @@
             <th scope="col"class="text-center">MOTOR</th>
             <th scope="col"class="text-center">MARCA</th>
             <th scope="col"class="text-center">TIPO VEHICULO</th>
+            <th scope="col"class="text-center">Opciones</th>
           </tr>
         </thead>
         <tbody>
@@ -43,10 +44,19 @@
                         <td class="text-center">{{ vehiculo.motor }}</td>
                         <td class="text-center">{{ vehiculo.marca }}</td>
                         <td class="text-center">{{ vehiculo.tipovehiculo }}</td>
+                        <td class="d-flex justify-content-center">
+                            <a class="btn btn-primary btn-warning btn-xs" href="{% url 'vehiculos:vehiculoEdit' vehiculo.id %}">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+    
+                            <a class="btn btn-primary btn-dange btn-xs" href="{% url 'vehiculos:vehiculoElim' vehiculo.id %}">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </a>
+                        </td>
                     </tr>
                 {% endfor %}
             {% else %}
-                <h3>No existen Registros</h3>
+                <h3>No existen Registros en Vehiculos</h3>
             {% endif %}
         </tbody>
     </table>
