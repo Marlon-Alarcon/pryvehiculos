@@ -1,0 +1,60 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+       <div class="row" style="padding: 60px">
+           <div class="col-3"></div>
+           <div class="col-6 text-center">
+                <div class="form-group">
+                   <h5 style="font-family:Fantasy">Mostrar el valor total de vehiculos vendidos en un rango de fecha, discriminados por el usuario</h5>
+                   <h6>-----------------------------------------------------------------------</h6>
+                   <h5><i> <b> INGRESE EL RANGO DE FECHAS </b> </i></h5>
+                   <br>
+                    <div style="padding: 5px">
+                        <label for="fechainit">Fecha Inicial:</label>
+                        <input type="date" name="fechainit" >
+                    </div>
+                    <div style="padding: 5px"> 
+                        <label for="fechafin">Fecha Final:</label>
+                        <input type="date" name="fechafin">
+                    </div>
+                </div>
+                <div class="form-group container">
+                    <br>
+                    <button class="btn btn-outline-primary" type="submit">
+                        CONSULTAR
+                    </button>
+                </div>
+            </div>
+       </div>
+    </form>
+    <h3 class="text-center">TABLA</h3>
+    <div class="row" style="padding: 0px">
+        <div class="col-3"></div>
+        <div class="col-6" style=" background-color:#069A8E; border-radius: 10px;">
+             <div class = "text-center" class="form-group">
+                <table class="table table-primary table-hover">
+                    <thead>
+                      <tr class="table-info" >
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Valor Total</th>
+                      </tr>
+                    </thead>
+                    <tbody> 
+                    {% if consulta4 %}
+                        {% for consulta in consulta4 %}
+                            <tr>
+                                <td>{{ consulta.user}}</td>
+                                <td>{{ consulta.total}}</td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                    <h5><i>No existen registros</i></h5>
+                    {%endif%}
+                    </tbody>
+                </table>
+            </div>
+         </div>
+    </div>
+{% endblock  %}

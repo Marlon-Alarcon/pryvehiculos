@@ -1,0 +1,39 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+       <div class="row " style="padding: 60px" >
+        <div class="col-3"></div>
+           <div class=" col-6 text-center">
+                <div class="form-group">
+                   <h4 style="font-family:Fantasy">Valor total de vehiculos vendidos en un rango</h4>
+                   <h6>-----------------------------------------------------------------------</h6>
+                    <h5><b> Ingrese el rango de fechas </b></h5>
+                    <br>
+                    <div style="padding: 5px">
+                        <label for="fechainit">Fecha Inicial:</label>
+                        <input type="date" name="fechainit" placeholder="Ingrese la fecha">
+                    </div>
+                    <div style="padding: 5px"> 
+                        <label for="fechafin">Fecha Final: </label>
+                        <input type="date" name="fechafin" placeholder="Ingrese la fecha">
+                    </div>
+                </div>
+                <div class="form-group container">
+                    <br>
+                    <button class="btn btn-outline-primary" type="submit">
+                        CONSULTAR
+                    </button>
+                </div>
+            </div>
+       </div>
+       <div class="container text-center col-4" style=" background-color:#CCF3EE; border-radius: 20px; height: 80px">
+        <div>
+             <div class="form-group" style="padding: 12px;">
+                <h5> El valor total de vehiculos vendidos en el rango dado es: {{context.consulta1.valorTotal__sum}}</h5>
+            </div>
+         </div>
+        </div>
+    </form>
+{% endblock  %}

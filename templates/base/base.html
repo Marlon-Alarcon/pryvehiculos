@@ -13,11 +13,12 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body>
+<body style="background-color:#F9F3EE;">
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">MENU</a>
+      <a class="navbar-brand" href="{% url 'home' %}"> <img src="https://fasican.org/wp-content/uploads/2015/05/home-icon.png" width="28" height="28" class="d-inline-block align-text-top">
+        HOME</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -25,15 +26,12 @@
       <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav me-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="{% url 'home' %}" >Home
+            <a class="nav-link active" href="{% url 'home' %}" >Home
               <span class="visually-hidden">(current)</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'vehiculos:listVehiculos' %}">Vehiculos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'ventas:listVentas' %}">Ventas</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'vehiculos:listMarca' %}">Marcas</a>
@@ -42,14 +40,18 @@
             <a class="nav-link" href="{% url 'vehiculos:listTipoVehiculo' %}">Tipo Vehiculo</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="{% url 'ventas:listVentas' %}">Ventas</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="{% url 'ventas:listVehiculoventa' %}">Vehiculo Venta</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Consultas</a>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Marca</a>
-              <a class="dropdown-item" href="#">Opcion 2</a>
-              <a class="dropdown-item" href="#">Opcion 3</a>
+              <a class="dropdown-item" href="{% url 'ventas:consulta1' %}">Primera Consulta</a>
+              <a class="dropdown-item" href="{% url 'ventas:consulta2' %}">Segunda Consulta</a>
+              <a class="dropdown-item" href="{% url 'ventas:consulta3' %}">Tercera Consulta</a>
+              <a class="dropdown-item" href="{% url 'ventas:consulta4' %}">Cuarta Consulta</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">-Opcion-</a>
             </div>
@@ -66,7 +68,6 @@
 {% block content %}
       
 {% endblock %}
-
       <script src="{% static 'js/bootstrap.min.js' %}"></script>
       <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
 </body>
